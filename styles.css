@@ -54,18 +54,15 @@ header {
 /* Main content styles */
 .content-wrapper {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: row;
     gap: 60px;
     margin-top: 40px;
-    width: 100%;
-    align-items: stretch;
     padding: 0 30px;
 }
 
 .text-content {
-    flex: 1;
+    flex: 0 1 50%;
     position: relative;
-    width: calc(50% - 30px);
     min-height: 600px;
 }
 
@@ -125,148 +122,6 @@ p {
     margin-top: 45px;
 }
 
-/* Form styles */
-.form-container {
-    flex: 1;
-    width: calc(50% - 30px);
-    min-height: 600px;
-    background: rgba(30, 30, 30, 0.7);
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    position: relative;
-    z-index: 3;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    display: flex;
-    flex-direction: column;
-}
-
-.form-container h2 {
-    text-align: center;
-    margin-bottom: 35px;
-    font-size: 36px;
-}
-
-.availability-note {
-    text-align: center;
-    font-size: 15px;
-    color: rgba(255, 255, 255, 0.7);
-    margin-bottom: 30px;
-}
-
-.compact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    flex-grow: 1;
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    position: relative;
-    z-index: 4;
-}
-
-label {
-    font-weight: 600;
-    font-size: 15px;
-    color: rgba(255, 255, 255, 0.9);
-    letter-spacing: 0.3px;
-}
-
-input {
-    width: 100%;
-    padding: 14px 16px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    font-size: 16px;
-    background-color: rgba(45, 45, 45, 0.5);
-    color: #ffffff;
-    -webkit-appearance: none;
-    appearance: none;
-    transition: all 0.3s ease;
-}
-
-input:focus {
-    outline: none;
-    border-color: rgba(255, 255, 255, 0.3);
-    background-color: rgba(45, 45, 45, 0.7);
-    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
-}
-
-select {
-    width: 100%;
-    padding: 14px 16px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    font-size: 16px;
-    height: 52px;
-    background-color: rgba(45, 45, 45, 0.5);
-    color: #ffffff;
-    cursor: pointer;
-    -webkit-appearance: menulist;
-    -moz-appearance: menulist;
-    appearance: menulist;
-    position: relative;
-    z-index: 5;
-    transition: all 0.3s ease;
-}
-
-select:focus {
-    outline: none;
-    border-color: rgba(255, 255, 255, 0.3);
-    background-color: rgba(45, 45, 45, 0.7);
-    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
-}
-
-select option {
-    background-color: #2d2d2d;
-    color: #ffffff;
-    padding: 14px;
-    font-size: 16px;
-}
-
-.submit-button {
-    width: 100%;
-    padding: 16px;
-    background: linear-gradient(135deg, #4a4a4a 0%, #3a3a3a 100%);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 17px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    z-index: 5;
-    -webkit-appearance: none;
-    appearance: none;
-    letter-spacing: 0.3px;
-    margin-top: auto;
-}
-
-.submit-button:hover {
-    background: linear-gradient(135deg, #5a5a5a 0%, #4a4a4a 100%);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-.submit-button:active {
-    transform: translateY(0);
-}
-
-.consent-text {
-    font-size: 13px;
-    color: rgba(255, 255, 255, 0.6);
-    margin-top: 25px;
-    text-align: center;
-    line-height: 1.6;
-}
-
 /* Message styles */
 .message {
     padding: 14px;
@@ -308,22 +163,22 @@ select option {
 
 @media (max-width: 992px) {
     .content-wrapper {
+        flex-direction: column;
         gap: 40px;
+    }
+
+    .text-content {
+        flex: 1;
+        width: 100%;
+        min-height: 500px;
     }
 
     h1 {
         font-size: 42px;
     }
 
-    .text-content-overlay,
-    .form-container {
+    .text-content-overlay {
         padding: 35px;
-    }
-
-    .text-content,
-    .form-container {
-        width: 100%;
-        min-height: 500px;
     }
 }
 
@@ -342,14 +197,11 @@ select option {
     }
 
     .content-wrapper {
-        flex-direction: column;
-        gap: 35px;
-        margin-top: 25px;
         padding: 0 20px;
+        gap: 30px;
     }
 
-    .text-content-overlay,
-    .form-container {
+    .text-content-overlay {
         padding: 30px;
         min-height: 450px;
     }
@@ -382,11 +234,10 @@ select option {
 
     .content-wrapper {
         padding: 0 15px;
-        gap: 30px;
+        gap: 20px;
     }
 
-    .text-content-overlay,
-    .form-container {
+    .text-content-overlay {
         padding: 25px;
         min-height: 400px;
     }
@@ -401,14 +252,5 @@ select option {
 
     p {
         font-size: 15px;
-    }
-
-    input, select {
-        padding: 12px 14px;
-    }
-
-    .submit-button {
-        padding: 14px;
-        font-size: 16px;
     }
 }
