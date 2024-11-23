@@ -9,38 +9,50 @@ window.addEventListener('message', function(event) {
 
     try {
         const data = event.data;
-        console.log('Received data from Kit:', data); // Debug log
+        console.log('Received data from Kit:', data);
         
         // Check if this is a form submission event
         if (data && data.type === 'form_submit') {
             // Extract form data
             const formData = data.data;
-            console.log('Form data:', formData); // Debug log
+            console.log('Form data:', formData);
             
-            // Construct URL for booking page with form data
-            const bookingUrl = new URL('booking.html', window.location.href);
+            // Construct Calendly URL with prefill data
+            const calendlyUrl = new URL('https://calendly.com/hideoutgolf/member-for-a-day');
+            
+            // Add Calendly configuration parameters
+            calendlyUrl.searchParams.set('hide_landing_page_details', '1');
+            calendlyUrl.searchParams.set('hide_gdpr_banner', '1');
+            calendlyUrl.searchParams.set('background_color', 'ffffff');
+            calendlyUrl.searchParams.set('text_color', '000000');
+            calendlyUrl.searchParams.set('primary_color', '000000');
+            calendlyUrl.searchParams.set('hide_event_type_details', '1');
             
             // Add form data as URL parameters
-            if (formData.email) bookingUrl.searchParams.set('email', formData.email);
+            if (formData.email) {
+                calendlyUrl.searchParams.set('email', formData.email);
+            }
             
-            // Handle first and last name separately
+            // Handle first and last name
             if (formData.fields) {
-                const firstName = formData.fields['First Name'] || '';
-                const lastName = formData.fields['Last Name'] || '';
-                bookingUrl.searchParams.set('firstName', firstName);
-                bookingUrl.searchParams.set('lastName', lastName);
+                const firstName = formData.fields['First Name'] || formData.fields['first_name'] || '';
+                const lastName = formData.fields['Last Name'] || formData.fields['last_name'] || '';
+                
+                if (firstName) calendlyUrl.searchParams.set('first_name', firstName);
+                if (lastName) calendlyUrl.searchParams.set('last_name', lastName);
                 
                 // Handle phone number
-                if (formData.fields.phone) {
-                    const formattedPhone = formData.fields.phone.replace(/\D/g, '');
-                    bookingUrl.searchParams.set('phone', formattedPhone);
+                const phone = formData.fields['phone'] || formData.fields['Phone'] || '';
+                if (phone) {
+                    const formattedPhone = phone.replace(/\D/g, '');
+                    calendlyUrl.searchParams.set('a1', formattedPhone);
                 }
             }
             
-            console.log('Redirecting to:', bookingUrl.toString()); // Debug log
+            console.log('Redirecting to Calendly:', calendlyUrl.toString());
             
-            // Redirect to booking page
-            window.location.href = bookingUrl.toString();
+            // Redirect directly to Calendly
+            window.location.href = calendlyUrl.toString();
         }
     } catch (error) {
         console.error('Error processing form submission:', error);
