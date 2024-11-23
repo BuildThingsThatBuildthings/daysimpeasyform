@@ -22,11 +22,19 @@ window.addEventListener('message', function(event) {
             
             // Add form data as URL parameters
             if (formData.email) bookingUrl.searchParams.set('email', formData.email);
-            if (formData.fields && formData.fields.name) bookingUrl.searchParams.set('name', formData.fields.name);
-            if (formData.fields && formData.fields.phone) {
-                // Format phone number (remove non-digits)
-                const formattedPhone = formData.fields.phone.replace(/\D/g, '');
-                bookingUrl.searchParams.set('phone', formattedPhone);
+            
+            // Handle first and last name separately
+            if (formData.fields) {
+                const firstName = formData.fields['First Name'] || '';
+                const lastName = formData.fields['Last Name'] || '';
+                bookingUrl.searchParams.set('firstName', firstName);
+                bookingUrl.searchParams.set('lastName', lastName);
+                
+                // Handle phone number
+                if (formData.fields.phone) {
+                    const formattedPhone = formData.fields.phone.replace(/\D/g, '');
+                    bookingUrl.searchParams.set('phone', formattedPhone);
+                }
             }
             
             console.log('Redirecting to:', bookingUrl.toString()); // Debug log

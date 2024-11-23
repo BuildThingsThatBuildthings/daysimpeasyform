@@ -167,17 +167,19 @@
                         window.addEventListener('load', function() {
                             // Get URL parameters from Kit form
                             const urlParams = new URLSearchParams(window.location.search);
-                            const name = urlParams.get('name');
+                            const firstName = urlParams.get('firstName');
+                            const lastName = urlParams.get('lastName');
                             const email = urlParams.get('email');
                             const phone = urlParams.get('phone');
 
-                            console.log('URL Parameters:', { name, email, phone }); // Debug log
+                            console.log('URL Parameters:', { firstName, lastName, email, phone }); // Debug log
 
                             // If we have form data, reinitialize Calendly with prefill
-                            if (name || email || phone) {
+                            if (firstName || lastName || email || phone) {
                                 const prefillData = {
                                     email: email || '',
-                                    name: name || '',
+                                    firstName: firstName || '',
+                                    lastName: lastName || ''
                                 };
 
                                 if (phone) {
