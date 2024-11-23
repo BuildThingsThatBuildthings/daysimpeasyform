@@ -171,18 +171,27 @@
                             const email = urlParams.get('email');
                             const phone = urlParams.get('phone');
 
+                            console.log('URL Parameters:', { name, email, phone }); // Debug log
+
                             // If we have form data, reinitialize Calendly with prefill
                             if (name || email || phone) {
+                                const prefillData = {
+                                    email: email || '',
+                                    name: name || '',
+                                };
+
+                                if (phone) {
+                                    prefillData.customAnswers = {
+                                        a1: phone
+                                    };
+                                }
+
+                                console.log('Prefill Data:', prefillData); // Debug log
+
                                 Calendly.initInlineWidget({
                                     url: 'https://calendly.com/hideoutgolf/member-for-a-day?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=ffffff&primary_color=000000&hide_event_type_details=1&hide_title=1&hide_description=1',
                                     parentElement: document.querySelector('.calendly-inline-widget'),
-                                    prefill: {
-                                        name: name || '',
-                                        email: email || '',
-                                        customAnswers: {
-                                            a1: phone || ''
-                                        }
-                                    }
+                                    prefill: prefillData
                                 });
                             }
 
