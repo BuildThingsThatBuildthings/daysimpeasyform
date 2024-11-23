@@ -38,8 +38,18 @@
             color: #000;
         }
         .step-description {
-            color: #666;
+            color: #333;
             line-height: 1.6;
+        }
+        .step-description p,
+        .step-description ul {
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .step-description ul {
+            list-style-position: inside;
+            padding-left: 1rem;
         }
         .brochure-button {
             display: inline-block;
@@ -69,6 +79,25 @@
             color: #666;
             font-size: 1.1rem;
         }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            margin: 2rem 0;
+            border-radius: 12px;
+        }
+        
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 12px;
+        }
     </style>
 </head>
 <body>
@@ -82,50 +111,78 @@
             <div class="next-steps-container">
                 <div class="confirmation-message">
                     <h1>You're All Set!</h1>
-                    <p>Your Member for a Day experience has been scheduled. Here's what happens next...</p>
+                    <p>Your Member for a Day experience has been scheduled, and we're thrilled to welcome you! Here's everything you need to know to make the most of your visit:</p>
                 </div>
+
+                <div class="video-container">
+                    <video 
+                        controls
+                        autoplay
+                        muted
+                        playsinline
+                        width="100%"
+                        height="100%"
+                        poster="https://storage.googleapis.com/msgsndr/RWD1uKPwFu84Zcm7Go2Q/media/66fdcb2bfb8b8b6e98a7df53.png">
+                        <source src="https://storage.googleapis.com/msgsndr/RWD1uKPwFu84Zcm7Go2Q/media/66ef07b63b00e20b9fed8bfa.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+
                 <div class="step-item">
                     <span class="step-number">1</span>
                     <div class="step-title">Check Your Email</div>
                     <div class="step-description">
-                        You'll receive a confirmation email with your booking details. Please add this to your calendar and keep it handy for reference.
+                        You'll receive a confirmation email with all your booking details. Add it to your calendar so you don't miss a moment of this exciting experience!
                     </div>
                 </div>
+
                 <div class="step-item">
                     <span class="step-number">2</span>
-                    <div class="step-title">Review Our Brochure</div>
+                    <div class="step-title">One Last Look at the Brochure</div>
                     <div class="step-description">
-                        Get familiar with our facilities and offerings by reviewing our digital brochure. Learn about our state-of-the-art golf simulators, practice facilities, and member amenities.
+                        You've probably seen this a million times already, but we wanted to make sure you have one more chance to review everything. Our brochure highlights our facilities, simulators, and amenities—perfect for jotting down any questions you'd like answered when you arrive.
                         <br><br>
-                        <a href="https://hideoutgolf.club/hideout-golf-club-brochure-neighbors/" class="brochure-button">View Digital Brochure</a>
+                        <a href="https://hideoutgolf.club/hideout-golf-club-brochure-neighbors/" class="brochure-button">View Digital Brochure →</a>
                     </div>
                 </div>
+
                 <div class="step-item">
                     <span class="step-number">3</span>
                     <div class="step-title">What to Bring</div>
                     <div class="step-description">
+                        <p>Here's a quick checklist to help you prepare for an incredible day:</p>
                         <ul>
-                            <li>Your own golf clubs (or let us know if you need to borrow some)</li>
-                            <li>Comfortable golf attire</li>
-                            <li>Any questions you have about membership</li>
+                            <li>Your golf clubs – Don't have a set? Let us know, and we'll provide one for you.</li>
+                            <li>Comfortable golf attire – Dress to play your best.</li>
+                            <li>Gym clothes – If you plan to work out in our fitness facilities.</li>
+                            <li>Laptop and work tools – Perfect for using our co-working space.</li>
+                            <li>Questions about membership – We're ready to answer anything you're curious about.</li>
                         </ul>
                     </div>
                 </div>
+
                 <div class="step-item">
                     <span class="step-number">4</span>
-                    <div class="step-title">Day of Your Visit</div>
+                    <div class="step-title">On the Day of Your Visit</div>
                     <div class="step-description">
-                        Arrive 10-15 minutes before your scheduled time. Our team will be ready to welcome you and show you around the facility. We'll get you set up on our state-of-the-art simulators and answer any questions you have about membership.
+                        <ul>
+                            <li>We'll be in touch on the day of to confirm your visit to answer any questions in getting to the club</li>
+                            <li>Our team will greet you, give you a tour, and set you up on our state-of-the-art simulators.</li>
+                            <li>Enjoy a personalized introduction to The Hideout experience—whether you're focusing on golf, work, or fitness.</li>
+                        </ul>
                     </div>
                 </div>
+
                 <div class="step-item">
                     <span class="step-number">5</span>
-                    <div class="step-title">Questions?</div>
+                    <div class="step-title">Got Questions?</div>
                     <div class="step-description">
-                        If you need to make any changes to your booking or have questions before your visit, please don't hesitate to contact us:
+                        Need to make changes or have last-minute questions? We're here to help:
                         <br><br>
-                        Email: info@hideoutgolf.club<br>
-                        Phone: (615) 866-4653
+                        Email: e@hideoutgolf.club<br>
+                        Phone: (615) 617-9071
+                        <br><br>
+                        We can't wait to help you live your best golf life. See you soon at The Hideout!
                     </div>
                 </div>
             </div>
