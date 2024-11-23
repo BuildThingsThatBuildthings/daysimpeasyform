@@ -20,43 +20,6 @@
             height: 800px;
             border: none;
         }
-        .booking-popup {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 1000;
-        }
-        .booking-popup iframe {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 90%;
-            height: 90%;
-            background: white;
-            border-radius: 12px;
-            border: none;
-        }
-        .booking-popup .close-button {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: white;
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
-            font-size: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1001;
-        }
         @media (max-width: 992px) {
             .kit-form-wrapper {
                 width: 100%;
@@ -93,7 +56,7 @@
 
                 <div class="kit-form-wrapper">
                     <iframe 
-                        src="https://hideout-golf-club.kit.com/048d1f85dd"
+                        src="https://hideout-golf-club.kit.com/048d1f85dd?redirect=false"
                         title="Kit Form"
                         style="width: 100%; height: 800px; border: none;"
                         sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-cookies allow-top-navigation"
@@ -107,44 +70,6 @@
         </main>
     </div>
 
-    <div class="booking-popup" id="bookingPopup">
-        <button class="close-button" onclick="closeBookingPopup()">×</button>
-        <iframe src="booking.html" title="Booking Calendar"></iframe>
-    </div>
-
-    <script>
-        function handleFormLoad(iframe) {
-            try {
-                iframe.contentWindow.addEventListener('message', function(event) {
-                    // Check if the message is from Kit
-                    if (event.origin === 'https://hideout-golf-club.kit.com') {
-                        // Check if the form was submitted successfully
-                        if (event.data && event.data.type === 'form_submit_success') {
-                            showBookingPopup();
-                        }
-                    }
-                });
-            } catch (e) {
-                console.error('Error setting up form listener:', e);
-            }
-        }
-
-        function showBookingPopup() {
-            document.getElementById('bookingPopup').style.display = 'block';
-            document.body.style.overflow = 'hidden'; // Prevent scrolling
-        }
-
-        function closeBookingPopup() {
-            document.getElementById('bookingPopup').style.display = 'none';
-            document.body.style.overflow = ''; // Restore scrolling
-        }
-
-        // Close popup when clicking outside
-        document.getElementById('bookingPopup').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeBookingPopup();
-            }
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
